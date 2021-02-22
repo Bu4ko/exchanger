@@ -47,17 +47,19 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 
 #Performing request
 For transfer request Postman may be used
+```
 request type: POST
 request url: http://exchanger.test/transactions
 request body: 
 {
-	"walletFrom": "2904e3ef-c438-4ec2-8345-1de5071a7f16",
-	"walletFromKey": "Hthvcbgtt",
+  "walletFrom": "2904e3ef-c438-4ec2-8345-1de5071a7f16",
+  "walletFromKey": "Hthvcbgtt",
   "walletTo": "96af9fb1-e55b-45c6-abda-3fecc4957d59",
   "amount": 25,
   "userId": "65910a2b-4c0e-4486-9c8e-ffa87cf6accb",
   "token": "$2y$10$rTFfToPjJvy9WF2AgPE7Seh5YvywR6wZ8wQvq.uwiYi5rvW/qONx6"
 }
+```
 
 
 # Assuptions and decisions
