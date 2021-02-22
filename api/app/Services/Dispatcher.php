@@ -26,8 +26,6 @@ class Dispatcher
 
     public function dispatch(DispatchableInterface $dispatchable)
     {
-        $result = [];
-
         $dispatchableClass = get_class($dispatchable);
         $dispatchableSerialized = serialize($dispatchable);
 
@@ -57,15 +55,15 @@ class Dispatcher
         return unserialize($result['result']);
     }
 
-    protected function dispatchCreateTransactionCommand(string $serializedCommand): bool
+    protected function dispatchCreateTransactionCommand(string $serializedCommand)
     {
         $result = $this->run($this->financeManagerUrl, $serializedCommand);
 
         if (!isset($result['result'])) {
-            return false;
+            return $result;
         }
 
-        return (bool)unserialize($result['result']);
+        return 1;
     }
 
 

@@ -4,6 +4,8 @@ services:
     build: ./docker/nginx
     ports:
       - "80:80"
+    depends_on:
+      - finance-manager
     volumes:
       - ./var/log/nginx:/var/log/nginx
       - ./:/var/www
@@ -14,14 +16,20 @@ services:
           - exchanger.finance-manager.test
   api-gateway:
     build: ./docker/php
+    depends_on:
+      - users
     volumes:
       - ./api:/var/www
   users:
-    build: ./docker/php
+    build: ./docker/users-php
+    depends_on:
+      - db
     volumes:
       - ./api:/var/www
   finance-manager:
     build: ./docker/php
+    depends_on:
+      - api-gateway
     volumes:
       - ./api:/var/www
   db:
