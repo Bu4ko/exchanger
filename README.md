@@ -10,32 +10,32 @@ finance-manager - responsible for walets management and funds transfering, uses 
 db - postgres instance with 2 databases used to store data
 
 # Architecture
-The entry point of the app is api/public/api-gateway/index.php
+- The entry point of the app is api/public/api-gateway/index.php
 
-There is 1 main controller located in api/app/ApiGateway/Http/Controllers/FinanceManagerController.php
+- There is 1 main controller located in api/app/ApiGateway/Http/Controllers/FinanceManagerController.php
 Also there is auth middleware that fetches info about user by userId and token (we assume, that user have already logged in the app and received tocken)
 
-User fetching is performed with api/app/CQRS/Queries/GetUserQuery
+- User fetching is performed with api/app/CQRS/Queries/GetUserQuery
 There are another possible query examples without full workflow realization in api/app/CQRS/Queries/
 
-Funds transfer is performed with api/app/CQRS/Commands/CreateTransactionCommand
+- Funds transfer is performed with api/app/CQRS/Commands/CreateTransactionCommand
 
-Commands and Queries are dispatched by the api/app/Services/Dispatcher.php
+- Commands and Queries are dispatched by the api/app/Services/Dispatcher.php
 It may be splitted into CommandDispatcher and QueryDispancher.
 
-In prod environment it would be better to use MQ and contracts or some middleware service with load balancer responsible for routing between services. It's better for isolation and scalability. Also in prod environment there are should be Api Tokens for services to verify requests.
+- In prod environment it would be better to use MQ and contracts or some middleware service with load balancer responsible for routing between services. It's better for isolation and scalability. Also in prod environment there are should be Api Tokens for services to verify requests.
 
-In this example I use serialized classes and RPC commands for communication between services, in prod env serialization should be replaced with Json/binary protocols/XML/Soap depending on app requirments.
+- In this example I use serialized classes and RPC commands for communication between services, in prod env serialization should be replaced with Json/binary protocols/XML/Soap depending on app requirments.
 
-Request processing on the consuming service side is performed via Handlers which are responsible for business logic. In real app It may be additional Domain Logic layer, but for this example I've decided that this separation is enough.
+- Request processing on the consuming service side is performed via Handlers which are responsible for business logic. In real app It may be additional Domain Logic layer, but for this example I've decided that this separation is enough.
 
-Handlers are resolved by Resolver.php (for example api/app/FinanceManager/CQRS/Resolver.php). Communication with database is performed via Repositories. There are plases for improvements here: add builders for objects, use DTO's and VO's, composite Entities/VO's where it's needed.
+- Handlers are resolved by Resolver.php (for example api/app/FinanceManager/CQRS/Resolver.php). Communication with database is performed via Repositories. There are plases for improvements here: add builders for objects, use DTO's and VO's, composite Entities/VO's where it's needed.
 
-Validation is performed by validators e.g. api/app/Finance/Manager/Validators/CreateTransactionValidator.php
+- Validation is performed by validators e.g. api/app/Finance/Manager/Validators/CreateTransactionValidator.php
 
-Also middlewares may be used for some cases of validation and restrictions.
+- Also middlewares may be used for some cases of validation and restrictions.
 
-Example of test is located in api/tests/Unit
+- Example of test is located in api/tests/Unit
 
 # Setup and deployment
 1. add hosts to your host file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
