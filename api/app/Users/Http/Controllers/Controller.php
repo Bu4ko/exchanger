@@ -16,24 +16,4 @@ class Controller extends BaseController
         $result = $handler->handle($unserializedEntity);
         return new Response($result->getData());
     }
-
-//    public function ping()
-//    {
-//        $client = new Client();
-//        //dd(env('USERS_URL'));
-//        $response = $client->get(env('USERS_URL') . '/pong');
-//
-//        return $response->getBody();
-//
-//        //dd($response);
-//    }
-
-    //public function pong(Request $request)
-    //{
-    //    //return dd(app('db'));
-    //    /** @var DatabaseManager $databaseManager */
-    //    $databaseManager = app('db');
-    //    $m = app('db')->select("SELECT * FROM users");
-    //    return $m;
-    //}
 }
