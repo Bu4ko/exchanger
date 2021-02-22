@@ -1,0 +1,45 @@
+version: '3'
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./var/log/nginx:/var/log/nginx
+      - ./:/var/www
+    networks:
+      default:
+        aliases:
+          - exchanger.users.test
+          - exchanger.finance-manager.test
+  api-gateway:
+    build: ./docker/php
+    volumes:
+      - ./api:/var/www
+  users:
+    build: ./docker/php
+    volumes:
+      - ./api:/var/www
+  finance-manager:
+    build: ./docker/php
+    volumes:
+      - ./api:/var/www
+  db:
+    image: postgres:13
+    volumes:
+      - ./docker/db/pg-init-scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db:/var/lib/postgresql/data
+      - ./:/var/www
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+
+volumes:
+  db:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
