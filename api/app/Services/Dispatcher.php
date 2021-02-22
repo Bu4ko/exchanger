@@ -38,8 +38,9 @@ class Dispatcher
             case 'App\CQRS\Queries\GetUserTransactionsQuery':
             case 'App\CQRS\Queries\GetUserWalletsQuery':
             case 'App\CQRS\Queries\GetWalletQuery':
-            case 'App\CQRS\Commands\CreateTransactionCommand':
                 return $this->dispatchToFinancialService($dispatchableSerialized);
+            case 'App\CQRS\Commands\CreateTransactionCommand':
+                return $this->dispatchCreateTransactionCommand($dispatchableSerialized);
             default:
                 throw new WrongDispatchableException(sprintf('Not supported dispatchable class: %s', $dispatchableClass));
         }
@@ -54,6 +55,17 @@ class Dispatcher
         }
 
         return unserialize($result['result']);
+    }
+
+    protected function dispatchCreateTransactionCommand(string $serializedCommand): bool
+    {
+        $result = $this->run($this->financeManagerUrl, $serializedCommand);
+
+        if (!isset($result['result'])) {
+            return false;
+        }
+
+        return (bool)unserialize($result['result']);
     }
 
 
