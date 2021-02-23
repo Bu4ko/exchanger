@@ -7,6 +7,13 @@ use App\Exceptions\WrongDispatchableException;
 use App\Interfaces\DispatchableInterface;
 use GuzzleHttp\Client;
 
+/**
+ * Responsible for dispatching commands and queries to corresponding services
+ * Responsible for serialization/deserealization and routing to services
+ *
+ * Class Dispatcher
+ * @package App\Services
+ */
 class Dispatcher
 {
     protected Client $httpClient;

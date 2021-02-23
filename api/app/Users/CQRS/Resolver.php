@@ -7,6 +7,12 @@ use App\Interfaces\DispatchableInterface;
 use App\Interfaces\HandlerInterface;
 use App\Users\CQRS\QueryHandlers\GetUserQueryHandler;
 
+/**
+ * Responsible for dispatching Commands/Queries to appropriate handlers
+ *
+ * Class Resolver
+ * @package App\Users\CQRS
+ */
 class Resolver
 {
     public function resolve(DispatchableInterface $entity): HandlerInterface

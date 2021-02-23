@@ -7,6 +7,12 @@ use App\FinanceManager\CQRS\CommandHandlers\CreateTransactionCommandHandler;
 use App\Interfaces\DispatchableInterface;
 use App\Interfaces\HandlerInterface;
 
+/**
+ * Responsible for dispatching Commands/Queries to appropriate handlers
+ *
+ * Class Resolver
+ * @package App\FinanceManager\CQRS
+ */
 class Resolver
 {
     public function resolve(DispatchableInterface $entity): HandlerInterface
