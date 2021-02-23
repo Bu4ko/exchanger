@@ -70,5 +70,7 @@ As we use minimal amounts of money for calculations, comissions are calculated w
 
 Auth may be created with OAuth, JWT, Bearer, 3rd party or custom. Didn't implement in in the scope of the task.
 
+For transactions tracking and managing it may be appropriate to use event sourcing to be able to reproduce app state at each moment of time, have clear understanding what changes were made and have an ability to rollback all actions if needed.
+
 Xdebug was added for tracing purposes, on prod env. it should be disabled
 
