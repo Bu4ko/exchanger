@@ -70,7 +70,7 @@ As we use minimal amounts of money for calculations, comissions are calculated w
 
 Auth may be created with OAuth, JWT, Bearer, 3rd party or custom. Didn't implement in in the scope of the task.
 
-Return values of Resolver and most of the functions should be DTO's, VO's or Collections. For prod would be good to have Typed collections that will have similar objects.
+Return values of Resolver and most of the functions should be DTO's, VO's or Collections and should be added to return type of functions. For prod would be good to have Typed collections that will have similar objects.
 
 For transactions tracking and managing it may be appropriate to use event sourcing to be able to reproduce app state at each moment of time, have clear understanding what changes were made and have an ability to rollback all actions if needed.
 
