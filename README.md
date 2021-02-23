@@ -41,9 +41,8 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 1. add hosts to your host file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
 2. Go to the root folder
 3. Run docker-compose up -d --build
-4. login into container sudo docker exec -it test_users_1 /bin/bash (for test case all operations are performed from users container and connedtions are shared between services, in real case all of these should be isolated)
-5. execute composer install
-6. execute php artisan migrate
+
+For simplification .env files were added to repository. On production they should be created during the deployment process and should not be stored here.
 
 #Performing request
 For transfer request Postman may be used
