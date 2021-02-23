@@ -37,6 +37,8 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 
 - Example of test is located in api/tests/Unit
 
+- Business logic was made framework independent so may be moved with minor changes to different setup
+
 # Setup and deployment
 1. add to your hosts file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
 2. Go to the root folder of the app
