@@ -61,7 +61,7 @@ request body:
 ```
 
 
-# Assuptions and decisions
+# Assuptions and decisions, what should be improved
 The assumptions was made for this app - we use integers in db to store money data, calculate in cents, if it would be bitcoins or some other cryptocurrencies int may be replaced with bigint and calculation will be made in satoshi for example.
 
 Comission percent is hardcoded in env, in real app it would be better to have it configurable (store default value in env and populate it to config and replace it if corresponding DB value presented).
@@ -69,6 +69,8 @@ Comission percent is hardcoded in env, in real app it would be better to have it
 As we use minimal amounts of money for calculations, comissions are calculated with ceil as we want to round to bigger nearest non-float value.
 
 Auth may be created with OAuth, JWT, Bearer, 3rd party or custom. Didn't implement in in the scope of the task.
+
+Return values of Resolver and most of the functions should be DTO's, VO's or Collections. For prod would be good to have Typed collections that will have similar objects.
 
 For transactions tracking and managing it may be appropriate to use event sourcing to be able to reproduce app state at each moment of time, have clear understanding what changes were made and have an ability to rollback all actions if needed.
 
