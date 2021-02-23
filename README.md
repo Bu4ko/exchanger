@@ -3,11 +3,11 @@ Microservice app to transfer funds between wallets
 
 # Service topology
 There are 5 services: 
-nginx - used to handle connections
-api-gateway - which is entry point of the app (rest api)
-users - responsible for users management, uses users db
-finance-manager - responsible for walets management and funds transfering, uses finance db
-db - postgres instance with 2 databases used to store data
+- nginx - used to handle connections
+- api-gateway - which is entry point of the app (rest api)
+- users - responsible for users management, uses users db
+- finance-manager - responsible for walets management and funds transfering, uses finance db
+- db - postgres instance with 2 databases used to store data
 
 # Architecture
 - The entry point of the app is api/public/api-gateway/index.php
@@ -38,8 +38,8 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 - Example of test is located in api/tests/Unit
 
 # Setup and deployment
-1. add hosts to your host file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
-2. Go to the root folder
+1. add to your hosts file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
+2. Go to the root folder of the app
 3. Run docker-compose up -d --build
 
 For simplification .env files were added to repository. On production they should be created during the deployment process and should not be stored here.
@@ -69,6 +69,8 @@ Comission percent is hardcoded in env, in real app it would be better to have it
 As we use minimal amounts of money for calculations, comissions are calculated with ceil as we want to round to bigger nearest non-float value.
 
 Auth may be created with OAuth, JWT, Bearer, 3rd party or custom. Didn't implement in in the scope of the task.
+
+For transactions tracking and managing it may be appropriate to use event sourcing to be able to reproduce app state at each moment of time, have clear understanding what changes were made and have an ability to rollback all actions if needed.
 
 Xdebug was added for tracing purposes, on prod env. it should be disabled
 
