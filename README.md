@@ -3,11 +3,11 @@ Microservice app to transfer funds between wallets
 
 # Service topology
 There are 5 services: 
-nginx - used to handle connections
-api-gateway - which is entry point of the app (rest api)
-users - responsible for users management, uses users db
-finance-manager - responsible for walets management and funds transfering, uses finance db
-db - postgres instance with 2 databases used to store data
+- nginx - used to handle connections
+- api-gateway - which is entry point of the app (rest api)
+- users - responsible for users management, uses users db
+- finance-manager - responsible for walets management and funds transfering, uses finance db
+- db - postgres instance with 2 databases used to store data
 
 # Architecture
 - The entry point of the app is api/public/api-gateway/index.php
