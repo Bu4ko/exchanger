@@ -38,8 +38,8 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 - Example of test is located in api/tests/Unit
 
 # Setup and deployment
-1. add hosts to your host file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
-2. Go to the root folder
+1. add to your hosts file: 127.0.0.1    exchanger.test exchanger.users.test exchanger.finance-manager.test
+2. Go to the root folder of the app
 3. Run docker-compose up -d --build
 
 For simplification .env files were added to repository. On production they should be created during the deployment process and should not be stored here.
