@@ -63,7 +63,7 @@ request body:
 ```
 
 
-# Assuptions and decisions, what should be improved
+# Assumptions and decisions, what should be improved
 The assumptions was made for this app - we use integers in db to store money data, calculate in cents, if it would be bitcoins or some other cryptocurrencies int may be replaced with bigint and calculation will be made in satoshi for example.
 
 Comission percent is hardcoded in env, in real app it would be better to have it configurable (store default value in env and populate it to config and replace it if corresponding DB value presented).
