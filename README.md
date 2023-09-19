@@ -29,7 +29,7 @@ It may be splitted into CommandDispatcher and QueryDispancher.
 
 - Request processing on the consuming service side is performed via Handlers which are responsible for business logic. In real app It may be additional Domain Logic layer, but for this example I've decided that this separation is enough.
 
-- Handlers are resolved by Resolver.php (for example api/app/FinanceManager/CQRS/Resolver.php). Communication with database is performed via Repositories. There are plases for improvements here: add builders for objects, use DTO's and VO's, composite Entities/VO's where it's needed.
+- Handlers are resolved by Resolver.php (for example api/app/FinanceManager/CQRS/Resolver.php). Communication with database is performed via Repositories. There are plaсes for improvements here: add builders for objects, use DTO's and VO's, composite Entities/VO's where it's needed.
 
 - Validation is performed by validators e.g. api/app/Finance/Manager/Validators/CreateTransactionValidator.php
 
@@ -64,7 +64,7 @@ request body:
 
 
 # Assumptions and decisions, what should be improved
-The assumptions was made for this app - we use integers in db to store money data, calculate in cents, if it would be bitcoins or some other cryptocurrencies int may be replaced with bigint and calculation will be made in satoshi for example.
+The assumptions was made for this app - we use integers in db to store money data, calculate in cents, if it would be bitcoins or some other cryptocurrencies int may be replaced with bigint and calculation will be made in satoshi for example. Also in real app it could be stored in string values and bcmath should be used to avoid calculation issues.
 
 Comission percent is hardcoded in env, in real app it would be better to have it configurable (store default value in env and populate it to config and replace it if corresponding DB value presented).
 
