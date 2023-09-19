@@ -78,3 +78,5 @@ For transactions tracking and managing it may be appropriate to use event sourci
 
 Xdebug was added for tracing purposes, on prod env. it should be disabled
 
+Services could be splitted to different projects. Common functionality could be moved to library.
+
